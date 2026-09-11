@@ -1,0 +1,104 @@
+<%- include('partials/header') %>
+
+<div class="relative flex-grow flex flex-col items-center justify-between py-12 px-4 min-h-[650px] bg-cover bg-center bg-no-repeat" style="background-image: url('/images/ldg.png');">
+    
+    <div class="absolute inset-0 bg-white/40 backdrop-blur-[2px] -z-0"></div>
+
+    <div class="relative z-10 flex flex-col items-center text-center w-full max-w-4xl my-auto">
+        
+        <div class="bg-white/90 backdrop-blur-md p-5 rounded-3xl shadow-sm border border-white/60 mb-6">
+            <img src="/images/moic_logo.svg" alt="MoIC" class="h-16 w-auto object-contain">
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-extrabold text-[#1a2b4c] mb-4 drop-shadow-sm">
+            <%= __('hero_t1') %><span class="text-[#0052cc]"><%= __('hero_t2') %></span><%= __('hero_t3') %>
+        </h1>
+        <h2 class="text-xl md:text-2xl text-gray-700 font-medium mb-3"><%= __('hero_sub') %></h2>
+        <p class="text-gray-600 mb-12 max-w-lg mx-auto leading-relaxed"><%= __('hero_desc') %></p>
+
+        <div class="flex flex-col md:flex-row gap-6 w-full justify-center px-4">
+            
+            <div class="bg-white/95 backdrop-blur-md rounded-[2rem] p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.15)] w-full md:w-[22rem] text-left rtl:text-right relative overflow-hidden group transition-all duration-300 hover:-translate-y-1 border border-white">
+                <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-40 h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full rtl:rounded-br-full -z-10 opacity-60"></div>
+                
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-[#0052cc] text-white flex items-center justify-center text-2xl shadow-lg shadow-blue-200">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right rtl:rotate-180 text-gray-300 text-xl group-hover:text-[#0052cc] transition-colors"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-2"><%= __('card_sup_title') %></h3>
+                <p class="text-sm text-gray-500 mb-10 h-10"><%= __('card_sup_desc') %></p>
+                
+                <a href="/support" class="flex justify-center items-center gap-2 w-full bg-gradient-to-r from-[#0a47b8] to-[#1464f6] text-white font-medium py-3.5 rounded-2xl hover:shadow-lg hover:shadow-blue-200 transition-all">
+                    <i class="fa-solid fa-arrow-right rtl:rotate-180 text-sm"></i> <%= __('card_sup_btn') %>
+                </a>
+            </div>
+
+            <div class="bg-white/95 backdrop-blur-md rounded-[2rem] p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.15)] w-full md:w-[22rem] text-left rtl:text-right relative overflow-hidden group transition-all duration-300 hover:-translate-y-1 border border-white">
+                <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-40 h-40 bg-gradient-to-bl from-yellow-50 to-transparent rounded-bl-full rtl:rounded-br-full -z-10 opacity-60"></div>
+                
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-[#f5b800] text-white flex items-center justify-center text-2xl shadow-lg shadow-yellow-200">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right rtl:rotate-180 text-gray-300 text-xl group-hover:text-[#f5b800] transition-colors"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-2"><%= __('card_rep_title') %></h3>
+                <p class="text-sm text-gray-500 mb-10 h-10"><%= __('card_rep_desc') %></p>
+                
+                <a href="/reports" class="flex justify-center items-center gap-2 w-full bg-gradient-to-r from-[#e5a800] to-[#ffc71f] text-white font-medium py-3.5 rounded-2xl hover:shadow-lg hover:shadow-yellow-200 transition-all">
+                    <i class="fa-solid fa-arrow-right rtl:rotate-180 text-sm"></i> <%= __('card_rep_btn') %>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="relative z-10 mt-16 max-w-5xl w-full bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white/60 flex flex-wrap justify-center md:justify-between items-center gap-6 px-8 py-6">
+        
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-shield-halved text-blue-600 text-xl"></i>
+            <div class="text-left rtl:text-right">
+                <p class="font-bold text-gray-800 text-sm"><%= __('feat_1_title') %></p>
+                <p class="text-gray-500 text-xs mt-0.5"><%= __('feat_1_desc') %></p>
+            </div>
+        </div>
+        
+        <div class="hidden md:block w-px h-8 bg-gray-200"></div>
+
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-bolt text-yellow-500 text-xl"></i>
+            <div class="text-left rtl:text-right">
+                <p class="font-bold text-gray-800 text-sm"><%= __('feat_2_title') %></p>
+                <p class="text-gray-500 text-xs mt-0.5"><%= __('feat_2_desc') %></p>
+            </div>
+        </div>
+
+        <div class="hidden md:block w-px h-8 bg-gray-200"></div>
+
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-link text-blue-600 text-xl"></i>
+            <div class="text-left rtl:text-right">
+                <p class="font-bold text-gray-800 text-sm"><%= __('feat_3_title') %></p>
+                <p class="text-gray-500 text-xs mt-0.5"><%= __('feat_3_desc') %></p>
+            </div>
+        </div>
+
+        <div class="hidden md:block w-px h-8 bg-gray-200"></div>
+
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-wand-magic-sparkles text-yellow-500 text-xl"></i>
+            <div class="text-left rtl:text-right">
+                <p class="font-bold text-gray-800 text-sm"><%= __('feat_4_title') %></p>
+                <p class="text-gray-500 text-xs mt-0.5"><%= __('feat_4_desc') %></p>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>

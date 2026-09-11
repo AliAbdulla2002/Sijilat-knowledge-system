@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+
+<div class="min-h-[85vh] flex items-center justify-center bg-[url('/images/Sol.png')] bg-cover bg-center bg-fixed bg-no-repeat py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full bg-white/90 backdrop-blur-xl p-10 rounded-3xl shadow-2xl border border-white/50 relative overflow-hidden">
+        
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-moicGold to-moicBlue"></div>
+
+        <div class="text-center mb-10 mt-2">
+            <div class="mx-auto w-20 h-20 bg-blue-50 text-[#0052cc] rounded-full flex items-center justify-center text-3xl mb-5 shadow-inner border border-blue-100">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-[#1a2b4c] tracking-tight">
+                <%= __('login_title').replace('🔐 ', '') %>
+            </h2>
+        </div>
+
+        <form class="space-y-6" action="/admin/login" method="POST">
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="bg-red-50 border-l-4 rtl:border-l-0 rtl:border-r-4 border-red-500 p-4 rounded-xl flex items-start gap-3 shadow-sm">
+                    <i class="fa-solid fa-circle-exclamation text-red-500 mt-0.5"></i>
+                    <p class="text-sm text-red-700 font-bold"><%= error %></p>
+                </div>
+            <% } %>
+
+            <div class="space-y-5">
+                <div>
+                    <label for="username" class="block text-sm font-bold text-gray-700 mb-2"><%= __('login_user') %></label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute top-3.5 left-4 rtl:left-auto rtl:right-4 text-gray-400"></i>
+                        <input id="username" name="username" type="text" required 
+                               class="appearance-none block w-full pl-11 pr-4 rtl:pr-11 rtl:pl-4 py-3.5 border border-gray-200 bg-gray-50/50 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition font-medium" 
+                               placeholder="<%= __('login_user') %>">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-bold text-gray-700 mb-2"><%= __('login_pass') %></label>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute top-3.5 left-4 rtl:left-auto rtl:right-4 text-gray-400"></i>
+                        <input id="password" name="password" type="password" required 
+                               class="appearance-none block w-full pl-11 pr-4 rtl:pr-11 rtl:pl-4 py-3.5 border border-gray-200 bg-gray-50/50 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition font-medium" 
+                               placeholder="••••••••">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <button type="submit" class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-lg font-bold rounded-xl text-white bg-[#0052cc] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-md transition overflow-hidden">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-4 rtl:pl-0 rtl:right-0 rtl:pr-4">
+                        <i class="fa-solid fa-arrow-right-to-bracket text-blue-300 group-hover:text-white transition rtl:rotate-180"></i>
+                    </span>
+                    <%= __('login_btn') %>
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-8 text-center border-t border-gray-100 pt-6">
+            <a href="/" class="text-sm font-bold text-gray-400 hover:text-[#0052cc] transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-arrow-<%= __('dir') === 'rtl' ? 'right' : 'left' %>"></i> <%= __('back_home') %>
+            </a>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+
+<div class="min-h-screen bg-[url('/images/Sol.png')] bg-cover bg-top bg-fixed bg-no-repeat py-12">
+    <div class="max-w-6xl mx-auto p-6 md:p-8">
+        
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white mb-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-extrabold text-[#1a2b4c] flex items-center gap-3">
+                    <i class="fa-solid fa-chart-pie text-moicGold"></i> <%= __('admin_dashboard') %>
+                </h1>
+                <p class="text-sm text-gray-500 mt-1"><%= __('dash_subtitle') %></p>
+            </div>
+            <a href="/admin/logs" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-sm rtl:ml-0 ltr:mr-0 ml-auto">
+                <i class="fa-solid fa-clipboard-list"></i> <%= __('admin_logs') %>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm flex items-center gap-6 transition hover:shadow-md">
+                <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-inner flex-shrink-0">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500 font-bold mb-1"><%= __('dash_total_issues') %></p>
+                    <h3 class="text-4xl font-extrabold text-[#1a2b4c]"><%= totalIssues %></h3>
+                </div>
+            </div>
+
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm flex items-center gap-6 transition hover:shadow-md">
+                <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-inner flex-shrink-0">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500 font-bold mb-1"><%= __('dash_total_reports') %></p>
+                    <h3 class="text-4xl font-extrabold text-[#1a2b4c]"><%= totalReports %></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm">
+                <h3 class="text-xl font-bold text-[#1a2b4c] mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-column text-blue-500"></i> <%= __('dash_cats_title') %>
+                </h3>
+                <div class="space-y-4">
+                    <% if (supportCategories && supportCategories.length > 0) { %>
+                        <% supportCategories.forEach(cat => { %>
+                            <div class="bg-gray-50/80 p-4 rounded-2xl border border-gray-100 flex justify-between items-center">
+                                <span class="font-bold text-gray-700"><%= cat.category %></span>
+                                <span class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-xl text-sm"><%= cat.count %> <%= __('dash_registered') %></span>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p class="text-gray-400 text-center py-6"><%= __('dash_no_data') %></p>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm">
+                <h3 class="text-xl font-bold text-[#1a2b4c] mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-amber-500"></i> <%= __('dash_recent_logs') %>
+                </h3>
+                <div class="space-y-4">
+                    <% if (recentLogs && recentLogs.length > 0) { %>
+                        <% recentLogs.forEach(log => { %>
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs
+                                    <%= log.action === 'CREATED' ? 'bg-green-100 text-green-600' : (log.action === 'UPDATED' ? 'bg-blue-100 text-blue-600' : 'bg-red-100 text-red-600') %>">
+                                    <i class="fa-solid <%= log.action === 'CREATED' ? 'fa-plus' : (log.action === 'UPDATED' ? 'fa-pen' : 'fa-trash') %>"></i>
+                                </div>
+                                <div class="bg-gray-50/80 p-3 rounded-2xl border border-gray-100 flex-grow">
+                                    <p class="text-sm font-bold text-gray-800"><%= log.item_title %></p>
+                                    <p class="text-xs text-gray-500 mt-1"><%= log.timestamp %></p>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p class="text-gray-400 text-center py-6"><%= __('dash_no_logs') %></p>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

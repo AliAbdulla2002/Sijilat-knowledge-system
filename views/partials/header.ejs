@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="<%= __('dir') %>" lang="<%= __('dir') === 'rtl' ? 'ar' : 'en' %>">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= __('app_title') %>
+    </title>
+    
+    <link rel="icon" type="image/x-icon" href="/images/logo.ico">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { moicBlue: '#004080', moicGold: '#f5c518', moicLight: '#f8f9fa' } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8fbff] text-gray-800 min-h-screen flex flex-col overflow-x-hidden antialiased">
+
+    <nav class="bg-white/90 backdrop-blur-xl shadow-sm border-b border-gray-100 py-3.5 px-4 md:px-10 flex justify-between items-center sticky top-0 z-50 relative">
+
+        <div class="flex items-center">
+            <a href="/" class="group flex items-center gap-3 text-moicBlue font-extrabold text-lg md:text-xl hover:text-[#0052cc] transition">
+                <img src="/images/logo.png" alt="Sijilat Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain rounded-xl shadow-sm border border-gray-100 group-hover:scale-105 transition-transform duration-300">
+                <span class="tracking-tight"><%= __('app_title') %></span>
+            </a>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-4">
+
+            <% if (typeof isAdmin !=='undefined' && isAdmin) { %>
+                <div class="flex items-center bg-gray-50/80 rounded-xl border border-gray-200 p-1 rtl:ml-2 ltr:mr-2">
+                    <a href="/admin/dashboard" class="text-sm font-bold text-gray-500 hover:text-blue-700 hover:bg-white px-3 py-1.5 rounded-lg transition flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-chart-pie text-blue-500"></i> <%= __('admin_dashboard') %>
+                    </a>
+                    <a href="/admin/logs" class="text-sm font-bold text-gray-500 hover:text-blue-700 hover:bg-white px-3 py-1.5 rounded-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-list text-gray-400"></i> <%= __('admin_logs') %>
+                    </a>
+                </div>
+
+                <a href="/admin/logout" class="text-sm font-bold text-red-500 hover:text-white hover:bg-red-500 px-4 py-2 rounded-xl border border-red-100 hover:border-red-500 transition flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-right-from-bracket rtl:rotate-180"></i> <%= __('admin_logout') %>
+                </a>
+            <% } else { %>
+                <a href="/admin/login" class="text-sm font-bold text-gray-500 hover:text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-xl transition flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield"></i> <%= __('admin_login') %>
+                </a>
+            <% } %>
+
+            <div class="w-px h-6 bg-gray-200 mx-1"></div>
+
+            <a href="<%= __('lang_link') %>" class="text-sm font-extrabold text-[#1a2b4c] hover:text-[#0052cc] hover:bg-blue-50 px-4 py-2 rounded-xl transition flex items-center gap-2 border border-transparent hover:border-blue-100">
+                <i class="fa-solid fa-globe text-blue-500"></i> <%= __('lang_switch') %>
+            </a>
+        </div>
+
+        <div class="lg:hidden flex items-center">
+            <button id="mobileMenuBtn" class="text-[#1a2b4c] p-2 focus:outline-none bg-gray-50 hover:bg-gray-100 rounded-xl transition border border-gray-200 shadow-sm">
+                <i class="fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden flex-col bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-xl absolute top-full left-0 w-full z-40 px-6 py-5 space-y-3">
+            
+            <% if (typeof isAdmin !=='undefined' && isAdmin) { %>
+                <a href="/admin/dashboard" class="flex items-center gap-3 text-[#1a2b4c] font-bold p-3.5 bg-gray-50 rounded-xl border border-gray-100 hover:bg-blue-50 transition shadow-sm">
+                    <i class="fa-solid fa-chart-pie text-blue-500 text-lg w-6 text-center"></i> <%= __('admin_dashboard') %>
+                </a>
+                <a href="/admin/logs" class="flex items-center gap-3 text-[#1a2b4c] font-bold p-3.5 bg-gray-50 rounded-xl border border-gray-100 hover:bg-blue-50 transition shadow-sm">
+                    <i class="fa-solid fa-clipboard-list text-gray-400 text-lg w-6 text-center"></i> <%= __('admin_logs') %>
+                </a>
+                <a href="/admin/logout" class="flex items-center gap-3 text-red-600 font-bold p-3.5 bg-red-50 rounded-xl border border-red-100 hover:bg-red-100 transition shadow-sm">
+                    <i class="fa-solid fa-arrow-right-from-bracket rtl:rotate-180 text-lg w-6 text-center"></i> <%= __('admin_logout') %>
+                </a>
+            <% } else { %>
+                <a href="/admin/login" class="flex items-center gap-3 text-[#1a2b4c] font-bold p-3.5 bg-gray-50 rounded-xl border border-gray-100 hover:bg-blue-50 transition shadow-sm">
+                    <i class="fa-solid fa-user-shield text-blue-500 text-lg w-6 text-center"></i> <%= __('admin_login') %>
+                </a>
+            <% } %>
+
+            <hr class="border-gray-100 my-2">
+
+            <a href="<%= __('lang_link') %>" class="flex items-center justify-center gap-2 text-[#1a2b4c] font-bold p-3.5 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition shadow-sm">
+                <i class="fa-solid fa-globe text-blue-600 text-lg"></i> <%= __('lang_switch') %>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+
+    <main class="flex-grow">

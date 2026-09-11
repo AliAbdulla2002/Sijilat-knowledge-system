@@ -1,0 +1,86 @@
+<%- include('partials/header') %>
+
+<div class="min-h-screen bg-[url('/images/Sol.png')] bg-cover bg-top bg-fixed bg-no-repeat py-12">
+    <div class="max-w-5xl mx-auto p-6 md:p-8">
+        
+        <div class="flex flex-wrap justify-between items-center mb-8 bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-sm border border-white">
+            <div>
+                <h2 class="text-3xl font-extrabold text-[#1a2b4c] flex items-center gap-3">
+                    <i class="fa-solid fa-clipboard-list text-moicGold"></i> <%= __('logs_title') %>
+                </h2>
+                <p class="text-sm text-gray-500 mt-1"><%= __('logs_subtitle') %></p>
+            </div>
+            
+            <button type="button" onclick="openClearLogsModal()" class="bg-red-50 text-red-600 border border-red-200 hover:bg-red-600 hover:text-white font-bold px-5 py-2.5 rounded-xl text-sm transition shadow-sm flex items-center gap-2">
+                <i class="fa-solid fa-trash-can"></i> <%= __('logs_clear_btn') %>
+            </button>
+        </div>
+
+        <div class="space-y-4">
+            <% if (logs && logs.length > 0) { %>
+                <% logs.forEach(log => { %>
+                    <div class="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-white shadow-sm flex justify-between items-center transition hover:shadow-md">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm
+                                <%= log.action === 'CREATED' ? 'bg-green-100 text-green-700' : (log.action === 'UPDATED' ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700') %>">
+                                <i class="fa-solid <%= log.action === 'CREATED' ? 'fa-plus' : (log.action === 'UPDATED' ? 'fa-pen' : 'fa-trash') %>"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold 
+                                        <%= log.action === 'CREATED' ? 'bg-green-100 text-green-700' : (log.action === 'UPDATED' ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700') %>">
+                                        <%= log.action %>
+                                    </span>
+                                    <h4 class="font-bold text-gray-800"><%= log.item_title %></h4>
+                                </div>
+                                <p class="text-sm text-gray-500"><%= log.details %></p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400 font-mono bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100"><%= log.timestamp %></span>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="text-center py-20 bg-white/80 backdrop-blur-md rounded-3xl border border-white shadow-sm">
+                    <i class="fa-solid fa-box-archive text-5xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 font-medium text-lg"><%= __('logs_empty') %></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<div id="clearLogsModal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative text-center">
+        <div class="w-16 h-16 bg-red-50 text-red-500 rounded-2xl mx-auto mb-4 flex items-center justify-center text-3xl">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-[#1a2b4c] mb-2"><%= __('modal_delete_title') %></h3>
+        <p class="text-gray-500 text-sm mb-8"><%= __('logs_confirm_clear') %></p>
+
+        <div class="flex gap-4">
+            <form action="/admin/logs/clear" method="POST" class="flex-grow">
+                <button type="submit" class="w-full bg-red-600 text-white font-bold py-3.5 rounded-xl hover:bg-red-700 transition shadow-md">
+                    <%= __('modal_confirm_btn') %>
+                </button>
+            </form>
+            <button type="button" onclick="closeClearLogsModal()" class="flex-grow bg-gray-100 text-gray-600 font-bold py-3.5 rounded-xl hover:bg-gray-200 transition">
+                <%= __('modal_cancel_btn') %>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openClearLogsModal() {
+        const modal = document.getElementById('clearLogsModal');
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeClearLogsModal() {
+        const modal = document.getElementById('clearLogsModal');
+        if (modal) modal.classList.add('hidden');
+    }
+</script>
+
+<%- include('partials/footer') %>
