@@ -97,6 +97,19 @@ Sijilat_Hub_V2/
 
 * Ensure you use a strong ADMIN_PASS and a secure SESSION_SECRET in production environments.
 
+## images for the website
+
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/58a40af9-4781-4c43-ae5a-7f4180a51456" />
+
+<img width="1919" height="921" alt="image" src="https://github.com/user-attachments/assets/60feaec7-c9c6-47c7-9e10-c1d7db95f980" />
+
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/eddcf7f5-ccec-483c-a36b-7244e0ef9da3" />
+
+<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/07e64841-2111-4b97-98c3-bbb1545aa722" />
+
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/6d4486ab-4b69-48a4-83e5-2fd0ec876eab" />
+
+
 # 👨‍💻 Author
 ## Ali Saleh Abdulla
 
