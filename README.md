@@ -97,9 +97,9 @@ Sijilat_Hub_V2/
 
 * Ensure you use a strong ADMIN_PASS and a secure SESSION_SECRET in production environments.
 
-## images for the website
+## 📷 Website Images 
 
-<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/58a40af9-4781-4c43-ae5a-7f4180a51456" />
+<img width="1919" height="913" alt="image" src="https://github.com/user-attachments/assets/a9c647bd-2ec4-4cd0-b4e2-200655062a1d" />
 
 <img width="1919" height="921" alt="image" src="https://github.com/user-attachments/assets/60feaec7-c9c6-47c7-9e10-c1d7db95f980" />
 
