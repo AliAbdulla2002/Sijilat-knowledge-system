@@ -2,6 +2,8 @@
 
 A professional, bilingual (English/Arabic), secure, and high-end knowledge management and support system built with a modern **Glassmorphism UI**. Designed for the Ministry of Industry and Commerce (MOIC) ecosystem to streamline technical support, document reports, track audit logs, and provide intelligent analytics.
 
+
+
 ---
 
 ## ✨ Features
@@ -37,8 +39,8 @@ Follow these steps to set up and run the project locally on your machine.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/Sijilat_Hub_V2.git](https://github.com/YOUR_USERNAME/Sijilat_Hub_V2.git)
-cd Sijilat_Hub_V2
+git clone [https://github.com/AliAbdulla2002/Sijilat-knowledge-system](https://github.com/AliAbdulla2002/Sijilat-knowledge-system)
+cd Sijilat-knowledge-system
 ```
 
 
