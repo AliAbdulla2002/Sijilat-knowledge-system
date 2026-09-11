@@ -4,12 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= __('app_title') %>
-    </title>
     
+    <title><%= __('app_title') %></title>
     <link rel="icon" type="image/x-icon" href="/images/logo.ico">
+    <meta name="theme-color" content="#004080">
     
+    <meta name="description" content="<%= __('hero_desc') %>">
+    
+    <meta property="og:title" content="<%= __('app_title') %>">
+    <meta property="og:description" content="<%= __('hero_desc') %>">
+    <meta property="og:image" content="https://sijilat-knowledge-system.onrender.com/images/logo.png">
+    <meta property="og:url" content="https://sijilat-knowledge-system.onrender.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<%= __('app_title') %>">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= __('app_title') %>">
+    <meta name="twitter:description" content="<%= __('hero_desc') %>">
+    <meta name="twitter:image" content="https://sijilat-knowledge-system.onrender.com/images/logo.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { theme: { extend: { colors: { moicBlue: '#004080', moicGold: '#f5c518', moicLight: '#f8f9fa' } } } }
